@@ -1,0 +1,22 @@
+var addBinary = function(a, b) {
+    let result = "";
+    let i = a.length - 1;
+    let j = b.length - 1;
+    let carry = 0;
+
+    // Loop from the end of both strings until all digits and carries are processed
+    while (i >= 0 || j >= 0 || carry > 0) {
+        let sum = carry;
+
+        if (i >= 0) sum += parseInt(a[i--]);
+        if (j >= 0) sum += parseInt(b[j--]);
+
+        // Append the binary digit (0 or 1) to the front of the result
+        result = (sum % 2) + result;
+
+        // Calculate the new carry (0 or 1)
+        carry = Math.floor(sum / 2);
+    }
+
+    return result;
+};
